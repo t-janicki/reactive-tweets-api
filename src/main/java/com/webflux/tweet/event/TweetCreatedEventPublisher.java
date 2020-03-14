@@ -1,5 +1,6 @@
 package com.webflux.tweet.event;
 
+import com.webflux.comment.event.CreatedEventPublisher;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
@@ -11,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.function.Consumer;
 
 @Component
-public class TweetCreatedEventPublisher implements ApplicationListener<TweetCreatedEvent>, Consumer<FluxSink<TweetCreatedEvent>> {
+public class TweetCreatedEventPublisher implements CreatedEventPublisher<TweetCreatedEvent> {
     private final Executor executor;
     private final BlockingQueue<TweetCreatedEvent> queue = new LinkedBlockingQueue<>();
 
