@@ -1,7 +1,7 @@
-package com.webflux.controller;
+package com.webflux.comment.controller;
 
 import com.webflux.comment.model.Comment;
-import com.webflux.service.CommentService;
+import com.webflux.comment.service.CommentService;
 import org.reactivestreams.Publisher;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

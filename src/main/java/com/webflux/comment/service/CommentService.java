@@ -1,4 +1,4 @@
-package com.webflux.service;
+package com.webflux.comment.service;
 
 import com.webflux.comment.event.CommentCreatedEvent;
 import com.webflux.comment.model.Comment;

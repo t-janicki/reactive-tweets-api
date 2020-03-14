@@ -3,7 +3,6 @@ package com.webflux.tweet.controller;
 import com.webflux.tweet.model.Tweet;
 import com.webflux.tweet.service.TweetService;
 import org.reactivestreams.Publisher;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +25,7 @@ public class TweetController {
         return service.all();
     }
 
-    //     Tweets are Sent to the client as Server Sent Events
+    //     Tweets are Sent to the client as stream
     @GetMapping(value = "/stream/tweets", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Tweet> streamAllTweets() {
         return service.all();
