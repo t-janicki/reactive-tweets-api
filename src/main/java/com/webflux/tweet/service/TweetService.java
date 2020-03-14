@@ -30,6 +30,12 @@ public class TweetService {
         return tweetRepository.findById(id);
     }
 
+    public Mono<Tweet> create(String text) {
+        return tweetRepository
+                .save(new Tweet(text))
+                .doOnSuccess(tweet -> this.publisher.publishEvent(new TweetCreatedEvent(tweet)));
+    }
+
     public Mono<Tweet> create(String text, List<Comment> comments) {
         return tweetRepository
                 .save(new Tweet(text, comments))
