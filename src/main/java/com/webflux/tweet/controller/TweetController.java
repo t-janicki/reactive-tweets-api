@@ -17,7 +17,6 @@ public class TweetController {
     private final MediaType mediaType = MediaType.APPLICATION_JSON_UTF8;
     private TweetService service;
 
-    @Autowired
     public TweetController(TweetService service) {
         this.service = service;
     }
@@ -36,7 +35,7 @@ public class TweetController {
     @PostMapping("/tweets")
     public Publisher<ResponseEntity<Tweet>> create(@RequestBody Tweet tweet) {
         return this.service
-                .create(tweet.getText())
+                .create(tweet.getText(), tweet.getComments())
                 .map(p -> ResponseEntity.created(URI.create("/tweets/" + p.getId()))
                         .contentType(mediaType)
                         .build());

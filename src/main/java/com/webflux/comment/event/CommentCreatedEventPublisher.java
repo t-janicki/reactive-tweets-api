@@ -1,4 +1,4 @@
-package com.webflux.tweet.event;
+package com.webflux.comment.event;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -11,30 +11,29 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.function.Consumer;
 
 @Component
-public class TweeCreatedEventPublisher implements ApplicationListener<TweetCreatedEvent>, Consumer<FluxSink<TweetCreatedEvent>> {
+public class CommentCreatedEventPublisher implements ApplicationListener<CommentCreatedEvent>, Consumer<FluxSink<CommentCreatedEvent>> {
     private final Executor executor;
-    private final BlockingQueue<TweetCreatedEvent> queue = new LinkedBlockingQueue<>();
+    private final BlockingQueue<CommentCreatedEvent> queue = new LinkedBlockingQueue<>();
 
-    TweeCreatedEventPublisher(Executor executor) {
+    CommentCreatedEventPublisher(Executor executor) {
         this.executor = executor;
     }
 
     @Override
-    public void accept(FluxSink<TweetCreatedEvent> sink) {
+    public void accept(FluxSink<CommentCreatedEvent> sink) {
         this.executor.execute(() -> {
             while (true)
                 try {
-                    TweetCreatedEvent event = queue.take();
+                    CommentCreatedEvent event = queue.take();
                     sink.next(event);
-                }
-                catch (InterruptedException e) {
+                } catch (InterruptedException e) {
                     ReflectionUtils.rethrowRuntimeException(e);
                 }
         });
     }
 
     @Override
-    public void onApplicationEvent(TweetCreatedEvent event) {
+    public void onApplicationEvent(CommentCreatedEvent event) {
         this.queue.offer(event);
     }
 }

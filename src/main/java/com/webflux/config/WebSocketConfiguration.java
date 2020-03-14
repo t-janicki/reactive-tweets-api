@@ -2,7 +2,7 @@ package com.webflux.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.webflux.tweet.event.TweeCreatedEventPublisher;
+import com.webflux.tweet.event.TweetCreatedEventPublisher;
 import com.webflux.tweet.event.TweetCreatedEvent;
 import com.webflux.tweet.model.Tweet;
 import org.springframework.context.annotation.Bean;
@@ -44,7 +44,7 @@ class WebSocketConfiguration {
     }
 
     @Bean
-    WebSocketHandler webSocketHandler(ObjectMapper objectMapper, TweeCreatedEventPublisher eventPublisher) {
+    WebSocketHandler webSocketHandler(ObjectMapper objectMapper, TweetCreatedEventPublisher eventPublisher) {
 
         Flux<TweetCreatedEvent> publish = Flux.create(eventPublisher).share();
 

@@ -8,7 +8,7 @@
 <body>
 <script>
   // <1>
-  var socket = new WebSocket('ws://localhost:8080/ws/tweets');
+  const socket = new WebSocket('ws://localhost:8080/ws/tweets');
   // <2>
   socket.addEventListener('message', function (event) {
     window.alert('message from server: ' + event.data);

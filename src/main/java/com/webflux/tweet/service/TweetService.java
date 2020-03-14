@@ -1,6 +1,7 @@
 package com.webflux.tweet.service;
 
 
+import com.webflux.comment.model.Comment;
 import com.webflux.tweet.event.TweetCreatedEvent;
 import com.webflux.tweet.model.Tweet;
 import com.webflux.tweet.repository.TweetRepository;
@@ -8,6 +9,8 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 @Service
 public class TweetService {
@@ -27,9 +30,9 @@ public class TweetService {
         return tweetRepository.findById(id);
     }
 
-    public Mono<Tweet> create(String text) {
+    public Mono<Tweet> create(String text, List<Comment> comments) {
         return tweetRepository
-                .save(new Tweet(text))
+                .save(new Tweet(text, comments))
                 .doOnSuccess(tweet -> this.publisher.publishEvent(new TweetCreatedEvent(tweet)));
     }
 
