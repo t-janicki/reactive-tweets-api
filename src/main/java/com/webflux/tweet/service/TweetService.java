@@ -1,8 +1,9 @@
-package com.webflux.service;
+package com.webflux.tweet.service;
 
-import com.webflux.event.TweetCreatedEvent;
-import com.webflux.model.Tweet;
-import com.webflux.repository.TweetRepository;
+
+import com.webflux.tweet.event.TweetCreatedEvent;
+import com.webflux.tweet.model.Tweet;
+import com.webflux.tweet.repository.TweetRepository;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

@@ -1,6 +1,6 @@
-package com.webflux.event;
+package com.webflux.tweet.event;
 
-import com.webflux.model.Tweet;
+import com.webflux.tweet.model.Tweet;
 import org.springframework.context.ApplicationEvent;
 
 public class TweetCreatedEvent extends ApplicationEvent {

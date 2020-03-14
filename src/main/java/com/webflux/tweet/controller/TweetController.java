@@ -1,7 +1,7 @@
-package com.webflux.controller;
+package com.webflux.tweet.controller;
 
-import com.webflux.model.Tweet;
-import com.webflux.service.TweetService;
+import com.webflux.tweet.model.Tweet;
+import com.webflux.tweet.service.TweetService;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

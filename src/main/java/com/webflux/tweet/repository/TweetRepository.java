@@ -1,8 +1,9 @@
-package com.webflux.repository;
+package com.webflux.tweet.repository;
 
-import com.webflux.model.Tweet;
+
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
+import com.webflux.tweet.model.Tweet;
 
 @Repository
 public interface TweetRepository extends ReactiveMongoRepository<Tweet, String> {

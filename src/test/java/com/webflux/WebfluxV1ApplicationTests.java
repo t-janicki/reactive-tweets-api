@@ -1,7 +1,7 @@
 package com.webflux;
 
-import com.webflux.model.Tweet;
-import com.webflux.repository.TweetRepository;
+import com.webflux.tweet.model.Tweet;
+import com.webflux.tweet.repository.TweetRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

@@ -2,9 +2,9 @@ package com.webflux.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.webflux.event.TweeCreatedEventPublisher;
-import com.webflux.event.TweetCreatedEvent;
-import com.webflux.model.Tweet;
+import com.webflux.tweet.event.TweeCreatedEventPublisher;
+import com.webflux.tweet.event.TweetCreatedEvent;
+import com.webflux.tweet.model.Tweet;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.HandlerMapping;
