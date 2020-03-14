@@ -1,6 +1,5 @@
 package com.webflux.comment.event;
 
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 import reactor.core.publisher.FluxSink;
@@ -8,10 +7,9 @@ import reactor.core.publisher.FluxSink;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.function.Consumer;
 
 @Component
-public class CommentCreatedEventPublisher implements ApplicationListener<CommentCreatedEvent>, Consumer<FluxSink<CommentCreatedEvent>> {
+public class CommentCreatedEventPublisher implements CreatedEventPublisher<CommentCreatedEvent> {
     private final Executor executor;
     private final BlockingQueue<CommentCreatedEvent> queue = new LinkedBlockingQueue<>();
 
@@ -25,6 +23,8 @@ public class CommentCreatedEventPublisher implements ApplicationListener<Comment
             while (true)
                 try {
                     CommentCreatedEvent event = queue.take();
+                    System.out.println("Event in CommentCreatedEventPublisher ");
+                    System.out.println(event);
                     sink.next(event);
                 } catch (InterruptedException e) {
                     ReflectionUtils.rethrowRuntimeException(e);
@@ -37,3 +37,4 @@ public class CommentCreatedEventPublisher implements ApplicationListener<Comment
         this.queue.offer(event);
     }
 }
+
