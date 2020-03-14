@@ -35,7 +35,7 @@ public class TweetController {
     @PostMapping("/tweets")
     public Publisher<ResponseEntity<Tweet>> create(@RequestBody Tweet tweet) {
         return this.service
-                .create(tweet.getText(), tweet.getComments())
+                .create(tweet.getText())
                 .map(p -> ResponseEntity.created(URI.create("/tweets/" + p.getId()))
                         .contentType(mediaType)
                         .build());
