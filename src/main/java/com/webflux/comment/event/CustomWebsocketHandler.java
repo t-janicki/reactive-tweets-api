@@ -11,11 +11,11 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class CustomWebsocketHandler implements WebSocketHandler {
-    private CreatedEventPublisher<?> eventPublisher;
+    private CommentCreatedEventPublisher eventPublisher;
     private ObjectMapper objectMapper;
 
 
-    public CustomWebsocketHandler(CreatedEventPublisher<?> eventPublisher,
+    public CustomWebsocketHandler(CommentCreatedEventPublisher eventPublisher,
                                   ObjectMapper objectMapper) {
         this.eventPublisher = eventPublisher;
         this.objectMapper = objectMapper;
