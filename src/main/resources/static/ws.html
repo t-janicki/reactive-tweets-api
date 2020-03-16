@@ -20,6 +20,15 @@
   commentSocket.addEventListener('message', function (event) {
     window.alert('message from server: ' + event.data);
   });
+
+  const socket = new SockJS('/websocketApp');
+  stompClient = Stomp.over(socket);
+
+  stompClient.connect({}, connectionSuccess());
+
+  function connectionSuccess() {
+      stompClient.subscribe('/topic/javainuse', onMessageReceived())
+  }
 </script>
 </body>
 </html>
